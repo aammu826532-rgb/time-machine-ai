@@ -23,15 +23,7 @@ if file:
     st.image(img, width=300)
     if st.button("🚀 TRAVEL IN TIME", type="primary"):
         with st.spinner("Time travelling daa..."):
-            prompt = """
-            You are a fun Photo Time Machine AI. Look at this image and give 3 parts:
-
-            1) 5 MINS BEFORE - What funny story happened just before this photo?
-            2) PRESENT - What is happening now? Describe dress, mood, background.
-            3) 5 MINS AFTER - What will happen next? Predict funny future.
-
-            Use emojis, make it very entertaining, in simple English.
-            """
+            prompt = "You are a fun Photo Time Machine AI. Look at this image and give 3 parts: 1) 5 MINS BEFORE - funny story, 2) PRESENT - what happening now, 3) 5 MINS AFTER - funny future. Use emojis, simple English."
             res = model.generate_content([prompt, img])
             st.success("Time Travel Done! 🎉")
             st.markdown(res.text)
