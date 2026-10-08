@@ -14,7 +14,7 @@ if not api:
     st.stop()
 
 genai.configure(api_key=api)
-model = genai.GenerativeModel('gemini-2.0-flash')
+model = genai.GenerativeModel('gemini-flash-latest')
 
 file = st.file_uploader("📸 Upload photo", type=["jpg","png","jpeg"])
 
@@ -23,7 +23,7 @@ if file:
     st.image(img, width=300)
     if st.button("🚀 TRAVEL IN TIME", type="primary"):
         with st.spinner("Time travelling daa..."):
-            prompt = "You are a fun Photo Time Machine AI. Look at this image and give 3 parts: 1) 5 MINS BEFORE - funny story, 2) PRESENT - what happening now, 3) 5 MINS AFTER - funny future. Use emojis, simple English."
+            prompt = "You are fun Photo Time Machine AI. Give 3 parts: 1) 5 MINS BEFORE - funny story, 2) PRESENT - what happening now, 3) 5 MINS AFTER - funny future. Use emojis, simple English."
             res = model.generate_content([prompt, img])
             st.success("Time Travel Done! 🎉")
             st.markdown(res.text)
